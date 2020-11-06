@@ -1,12 +1,24 @@
 <form class="toolbar-wrapper pure-form">
 	<div class="space-between">
-		<button class="pure-button pure-button-primary">
-			+ New Record
-		</button>
+		<button class="pure-button pure-button-primary">+ New Record</button>
 	</div>
 	<div class="space-between">
-		<input type="date" name="start-date" id="start-date" placeholder="Start Date" />
-    <input type="date" name="end-date" id="end-date" placeholder="End Date" />
-    <button class="pure-button">Clear</button>
+		<input
+			type="date"
+			name="start-date"
+			id="start-date"
+			placeholder="Start Date"
+			(change)="onDateChange($event)"
+			[(ngModel)]="startDate"
+		/>
+		<input
+			type="date"
+			name="end-date"
+			id="end-date"
+			placeholder="End Date"
+			(change)="onDateChange($event)"
+			[(ngModel)]="endDate"
+		/>
+		<button class="pure-button" (click)="clearDate()">Clear</button>
 	</div>
 </form>
