@@ -23,7 +23,8 @@
 			placeholder="End Date"
 			(change)="onDateChange($event)"
 			[(ngModel)]="endDate"
-		/>
+    />
+    <button class="pure-button button-secondary" (click)="filterCities()">Filter</button>
 		<button class="pure-button" (click)="clearDate()">Clear</button>
 	</div>
 </form>

@@ -17,7 +17,11 @@ export class ToolbarComponent implements OnInit {
 	onDateChange(event): void {
 		console.log(this.startDate);
 		console.log(this.endDate);
-	}
+  }
+
+  filterCities(): void {
+
+  }
 
 	clearDate(): void {
 		this.startDate = null;
