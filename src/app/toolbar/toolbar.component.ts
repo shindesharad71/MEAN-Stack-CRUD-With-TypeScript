@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ModalService } from '../modal/modal.service';
 
 @Component({
@@ -10,6 +10,8 @@ export class ToolbarComponent implements OnInit {
 	startDate: any;
 	endDate: any;
 
+	@Output() onFilter: EventEmitter<any> = new EventEmitter();
+
 	constructor(private modalService: ModalService) {}
 
 	ngOnInit(): void {}
@@ -17,18 +19,23 @@ export class ToolbarComponent implements OnInit {
 	onDateChange(event): void {
 		console.log(this.startDate);
 		console.log(this.endDate);
-  }
+	}
 
-  filterCities(): void {
-
-  }
+	filterCities(): void {
+		if (this.startDate && this.endDate) {
+			this.onFilter.emit({
+				startDate: this.startDate,
+				endDate: this.endDate,
+			});
+		}
+	}
 
 	clearDate(): void {
 		this.startDate = null;
 		this.endDate = null;
-  }
+	}
 
-  openModal(id: string): void {
+	openModal(id: string): void {
 		this.modalService.open(id);
 	}
 

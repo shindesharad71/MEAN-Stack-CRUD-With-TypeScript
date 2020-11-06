@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  onFilter(event): void {
+    console.log(event);
 
+  }
 }
