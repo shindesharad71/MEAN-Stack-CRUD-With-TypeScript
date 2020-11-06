@@ -9,7 +9,7 @@ import { ModalService } from '../modal/modal.service';
 export class TableComponent implements OnInit {
 	toolTipText = 'Click To Sort';
 
-	constructor(private modalService: ModalService) {}
+	constructor() {}
 
 	ngOnInit(): void {}
 
@@ -132,14 +132,6 @@ export class TableComponent implements OnInit {
 			color: '#a519fc',
 		},
 	];
-
-	openModal(id: string): void {
-		this.modalService.open(id);
-	}
-
-	closeModal(id: string): void {
-		this.modalService.close(id);
-	}
 }
 
 export interface IEmployee {

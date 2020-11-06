@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from '../modal/modal.service';
 
 @Component({
 	selector: 'app-toolbar',
@@ -9,7 +10,7 @@ export class ToolbarComponent implements OnInit {
 	startDate: any;
 	endDate: any;
 
-	constructor() {}
+	constructor(private modalService: ModalService) {}
 
 	ngOnInit(): void {}
 
@@ -21,5 +22,13 @@ export class ToolbarComponent implements OnInit {
 	clearDate(): void {
 		this.startDate = null;
 		this.endDate = null;
+  }
+
+  openModal(id: string): void {
+		this.modalService.open(id);
+	}
+
+	closeModal(id: string): void {
+		this.modalService.close(id);
 	}
 }
