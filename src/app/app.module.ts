@@ -7,13 +7,15 @@ import { TableComponent } from './table/table.component';
 import { FormsModule } from '@angular/forms';
 import { SortDirective } from './sort.directive';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     SortDirective,
-    ToolbarComponent
+    ToolbarComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

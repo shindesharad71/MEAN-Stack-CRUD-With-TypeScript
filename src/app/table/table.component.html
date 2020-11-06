@@ -83,3 +83,10 @@
 		</tr>
 	</tbody>
 </table>
+
+<button (click)="openModal('custom-modal')">Open Modal</button>
+
+<app-modal id="custom-modal">
+	<h1 style="height: 400px">A Tall Custom Modal!</h1>
+	<button (click)="closeModal('custom-modal')">Close</button>
+</app-modal>
