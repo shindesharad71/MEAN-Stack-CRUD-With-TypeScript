@@ -1,7 +1,17 @@
 .toolbar-wrapper {
-  display: flex;
-  justify-content: space-between;
-  max-width: 600px;
-  text-align: center;
-  margin: auto;
+	display: flex;
+	justify-content: space-between;
+	width: 600px;
+	text-align: center;
+	margin: auto;
+
+	.space-between {
+		display: flex;
+    justify-content: space-between;
+    margin-right: 16px;
+
+    input {
+      margin-right: 8px;
+    }
+	}
 }
