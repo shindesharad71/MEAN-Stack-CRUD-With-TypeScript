@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-tables"
+    }
+  },
+  "defaultProject": "angular-tables",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,85 @@
+<table class="table table-striped border mt-1">
+	<thead>
+		<tr>
+			<th
+				scope="col"
+				[appSort]="dataList"
+				data-order="desc"
+				data-name="id"
+				[title]="toolTipText"
+			>
+				Id
+			</th>
+			<th
+				scope="col"
+				[appSort]="dataList"
+				data-order="desc"
+				data-name="city"
+				[title]="toolTipText"
+			>
+				City
+			</th>
+			<th
+				scope="col"
+				[appSort]="dataList"
+				data-order="desc"
+				data-name="start_date"
+				data-type="date"
+				[title]="toolTipText"
+			>
+				Start Date
+			</th>
+			<th
+				scope="col"
+				[appSort]="dataList"
+				data-order="desc"
+				data-name="end_date"
+				data-type="date"
+				[title]="toolTipText"
+			>
+				End Date
+			</th>
+			<th
+				scope="col"
+				[appSort]="dataList"
+				data-order="desc"
+				data-name="price"
+				[title]="toolTipText"
+			>
+				Price
+			</th>
+			<th
+				scope="col"
+				[appSort]="dataList"
+				data-order="desc"
+				data-name="status"
+				[title]="toolTipText"
+			>
+				Status
+			</th>
+			<th
+				scope="col"
+				[appSort]="dataList"
+				data-order="desc"
+				data-name="color"
+				[title]="toolTipText"
+			>
+				Color
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let data of dataList">
+			<td>{{ data.id }}</td>
+			<td>{{ data.city }}</td>
+			<td>{{ data.start_date }}</td>
+			<td>{{ data.end_date }}</td>
+			<td>{{ data.price }}</td>
+			<td>{{ data.status }}</td>
+			<td>
+				<span [ngStyle]="{ background: data.color }"></span>
+				{{ data.color }}
+			</td>
+		</tr>
+	</tbody>
+</table>

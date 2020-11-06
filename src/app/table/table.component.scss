@@ -1,0 +1,13 @@
+table {
+  th {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  span {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+  }
+}
