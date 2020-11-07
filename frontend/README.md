@@ -1,27 +1,29 @@
-# AngularTables
+# MEAN Stack RESTful Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+This is a MEAN Stack RESTful application with table sorting and filters, application also have functionality to create, update, delete and get all the records.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation and Setup Instructions
 
-## Code scaffolding
+Clone this repository or download.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 1. Frontend
 
-## Build
+-   Goto the `frontend` folder by running `cd frontend/`
+-   Install angular cli with npm by running `npm i -g @angular/cli`
+-   Install project dependencies by running `npm i`
+-   Run project locally by running `ng serve`
+-   Open `http://localhost:4200/` in the browser
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### 2. Backend
 
-## Running unit tests
+-   Goto the `backend` folder by running `cd backend/`
+-   Install project dependencies by running `npm i`
+-   Rename `.env.default` to `.env` and update MongoDB config
+-   Run project locally by running `npm run build && npm run start`
+-   APIs will start running on `http://localhost:3000/`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Thanks and Credits
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. [Node TypeScript Boilerplate](https://github.com/sidhantpanda/docker-express-typescript-boilerplate)
+2. [How to sort table rows according to a column in Angular](https://medium.com/nerd-for-tech/how-to-sort-table-rows-according-column-in-angular-9-b04fdafb4140)
