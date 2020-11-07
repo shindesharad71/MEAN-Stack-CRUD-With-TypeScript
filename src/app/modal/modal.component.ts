@@ -22,11 +22,14 @@ import { ModalService } from './modal.service';
 	encapsulation: ViewEncapsulation.None,
 })
 export class ModalComponent implements OnInit, OnDestroy {
-	@Input() id = 'custom-modal';
+	@Input() id: string;
 
 	@Input() public set city(city: any) {
 		if (city?.id) {
 			this.editFormValues = city;
+			if (this.editFormValues.id) {
+				this.modalTitle = 'Edit Record';
+			}
 			this.updateFormValues();
 		}
 	}
@@ -45,10 +48,6 @@ export class ModalComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		if (this.editFormValues?.id) {
-			this.modalTitle = 'Edit Record';
-		}
-
 		if (!this.id) {
 			console.error('modal must have an id');
 			return;
@@ -107,8 +106,8 @@ export class ModalComponent implements OnInit, OnDestroy {
 
 	updateFormValues(): void {
 		if (this.editFormValues?.id) {
-			this.cityForm.patchValue(this.editFormValues);
 			this.cityForm.patchValue({
+        ...this.editFormValues,
 				start_date: formatDate(
 					this.editFormValues.start_date,
 					'yyyy-MM-dd',
@@ -120,12 +119,12 @@ export class ModalComponent implements OnInit, OnDestroy {
 					'en'
 				),
 			});
-			console.log('[Updated] - ', this.cityForm.value);
 		}
 	}
 
 	onSubmit(): void {
-		console.log(this.cityForm.value);
+    console.log(this.cityForm.value);
+    this.close();
 	}
 
 	ngOnDestroy(): void {

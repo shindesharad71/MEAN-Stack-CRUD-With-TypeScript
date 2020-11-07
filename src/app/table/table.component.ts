@@ -16,14 +16,14 @@ export class TableComponent implements OnInit {
 
 	editCity(city: ICity): void {
 		this.selectedCity = city;
-		this.modalService.open('custom-modal');
+		this.modalService.open('custom-modal-edit');
 	}
 
 	deleteCity(cityId): void {
 		console.log(cityId);
 	}
 
-	public dataList: Array<ICity> = [
+	public cityList: Array<ICity> = [
 		{
 			id: 2,
 			city: 'Lancai',

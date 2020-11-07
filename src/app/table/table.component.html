@@ -70,23 +70,33 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let data of dataList">
-			<td>{{ data.id }}</td>
-			<td>{{ data.city }}</td>
-			<td>{{ data.start_date }}</td>
-			<td>{{ data.end_date }}</td>
-			<td>{{ data.price }}</td>
-			<td>{{ data.status }}</td>
+		<tr *ngFor="let city of cityList">
+			<td>{{ city.id }}</td>
+			<td>{{ city.city }}</td>
+			<td>{{ city.start_date }}</td>
+			<td>{{ city.end_date }}</td>
+			<td>{{ city.price }}</td>
+			<td>{{ city.status }}</td>
 			<td>
-				<span [ngStyle]="{ background: data.color }"></span>
-				{{ data.color }}
+				<span [ngStyle]="{ background: city.color }"></span>
+				{{ city.color }}
 			</td>
 			<td>
-				<button class="pure-button button-secondary button-small" (click)="editCity(data)">Edit</button>
-				<button class="pure-button button-error button-small" (click)="deleteCity(data.id)">Delete</button>
+				<button
+					class="pure-button button-secondary button-small"
+					(click)="editCity(city)"
+				>
+					Edit
+				</button>
+				<button
+					class="pure-button button-error button-small"
+					(click)="deleteCity(city.id)"
+				>
+					Delete
+				</button>
 			</td>
 		</tr>
 	</tbody>
 </table>
 
-<app-modal id="custom-modal" [city]="selectedCity"></app-modal>
+<app-modal id="custom-modal-edit" [city]="selectedCity"></app-modal>
