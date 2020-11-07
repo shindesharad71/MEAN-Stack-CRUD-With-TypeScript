@@ -10,7 +10,7 @@ export class ToolbarComponent implements OnInit {
 	startDate: any;
 	endDate: any;
 
-	@Output() onFilter: EventEmitter<any> = new EventEmitter();
+	@Output() filterEvent = new EventEmitter<any>();
 
 	constructor(private modalService: ModalService) {}
 
@@ -23,7 +23,7 @@ export class ToolbarComponent implements OnInit {
 
 	filterCities(): void {
 		if (this.startDate && this.endDate) {
-			this.onFilter.emit({
+			this.filterEvent.emit({
 				startDate: this.startDate,
 				endDate: this.endDate,
 			});

@@ -66,6 +66,7 @@
 			>
 				Color
 			</th>
+			<th scope="col" data-name="action">Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -79,6 +80,10 @@
 			<td>
 				<span [ngStyle]="{ background: data.color }"></span>
 				{{ data.color }}
+			</td>
+			<td>
+				<button class="pure-button button-secondary">Edit</button>
+				<button class="pure-button button-error">Delete</button>
 			</td>
 		</tr>
 	</tbody>
