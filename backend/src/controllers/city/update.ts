@@ -20,7 +20,7 @@ const update: RequestHandler = async (req, res) => {
 		price,
 		start_date,
 		end_date,
-		color,
+		color
 	} = req.body;
 
 	const { id } = req.params;
@@ -38,5 +38,5 @@ const update: RequestHandler = async (req, res) => {
 };
 
 export default requestMiddleware(update, {
-	validation: { body: updateCitySchema },
+	validation: { body: updateCitySchema }
 });
