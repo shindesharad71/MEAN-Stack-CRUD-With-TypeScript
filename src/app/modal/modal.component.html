@@ -61,7 +61,7 @@
 					formControlName="color"
 				/>
 
-				<button type="submit" class="pure-button pure-button-primary">
+				<button type="submit" class="pure-button pure-button-primary" [disabled]="!cityForm.valid">
 					Submit
 				</button>
 				<button class="button-error pure-button" (click)="close()">

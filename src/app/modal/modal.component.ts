@@ -21,13 +21,15 @@ export class ModalComponent implements OnInit, OnDestroy {
 	@Input() public set city(city: any) {
 		if (city?.id) {
 			console.log('Input Added');
-			this.cityForm.patchValue(city);
+			this.editFormValues = city;
+			this.initForm();
 		}
 	}
 
 	cityForm: FormGroup;
 	private element: any;
 	modalTitle = 'Create Record';
+	editFormValues: any;
 
 	constructor(private modalService: ModalService, private el: ElementRef) {
 		this.element = el.nativeElement;
@@ -75,6 +77,12 @@ export class ModalComponent implements OnInit, OnDestroy {
 			status: new FormControl(null, Validators.required),
 			color: new FormControl(null, Validators.required),
 		});
+
+		if (this.editFormValues?.id) {
+      this.cityForm.patchValue(this.editFormValues);
+      console.log(this.cityForm.value);
+
+		}
 	}
 
 	onSubmit(): void {
