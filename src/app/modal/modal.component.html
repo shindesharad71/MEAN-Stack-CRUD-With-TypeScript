@@ -1,6 +1,49 @@
 <div class="app-modal">
 	<div class="app-modal-body">
-    <ng-content></ng-content>
+		<h3>{{ modalTitle }}</h3>
+		<form class="pure-form pure-form-stacked">
+			<fieldset>
+				<legend>City Details</legend>
+				<label for="city">City Name</label>
+				<input type="text" id="city" placeholder="City Name" />
+
+				<label for="start-date">Start Date</label>
+				<input type="date" id="start-date" />
+
+				<label for="start-date">End Date</label>
+				<input type="date" id="end-date" />
+
+				<label for="price">Price</label>
+				<input type="number" id="price" placeholder="Price" />
+
+				<label for="status">Status</label>
+				<select id="status">
+					<option>Yearly</option>
+					<option>Weekly</option>
+					<option>Seldom</option>
+					<option>Once</option>
+					<option>Often</option>
+					<option>Never</option>
+				</select>
+				<label for="color">Color</label>
+				<input
+					type="color"
+					id="color"
+					placeholder="Color"
+					value="#e66465"
+				/>
+
+				<button type="submit" class="pure-button pure-button-primary">
+					Submit
+				</button>
+				<button
+					class="button-error pure-button"
+					(click)="close('custom-modal')"
+				>
+					Cancel
+				</button>
+			</fieldset>
+		</form>
 	</div>
 </div>
 <div class="app-modal-background"></div>

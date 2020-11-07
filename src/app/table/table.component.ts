@@ -8,12 +8,23 @@ import { ModalService } from '../modal/modal.service';
 })
 export class TableComponent implements OnInit {
 	toolTipText = 'Click To Sort';
+	selectedCity: ICity = null;
 
-	constructor() {}
+	constructor(private modalService: ModalService) {}
 
 	ngOnInit(): void {}
 
-	public dataList: Array<IEmployee> = [
+	editCity(city: ICity): void {
+		console.log(city);
+		this.selectedCity = city;
+		this.modalService.open('custom-modal');
+	}
+
+	deleteCity(cityId): void {
+		console.log(cityId);
+	}
+
+	public dataList: Array<ICity> = [
 		{
 			id: 2,
 			city: 'Lancai',
@@ -134,7 +145,7 @@ export class TableComponent implements OnInit {
 	];
 }
 
-export interface IEmployee {
+export interface ICity {
 	id: number;
 	city: string;
 	start_date: string;

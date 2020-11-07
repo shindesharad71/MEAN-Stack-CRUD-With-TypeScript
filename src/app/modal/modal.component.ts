@@ -16,14 +16,20 @@ import { ModalService } from './modal.service';
 })
 export class ModalComponent implements OnInit, OnDestroy {
 	@Input() id: string;
+	@Input() city: any = null;
+
 	private element: any;
+	modalTitle = 'Create Record';
 
 	constructor(private modalService: ModalService, private el: ElementRef) {
 		this.element = el.nativeElement;
 	}
 
 	ngOnInit(): void {
-		// ensure id attribute exists
+		if (this.city?.id) {
+			this.modalTitle = 'Edit Record';
+		}
+
 		if (!this.id) {
 			console.error('modal must have an id');
 			return;

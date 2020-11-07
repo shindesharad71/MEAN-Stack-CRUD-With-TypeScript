@@ -82,9 +82,11 @@
 				{{ data.color }}
 			</td>
 			<td>
-				<button class="pure-button button-secondary">Edit</button>
-				<button class="pure-button button-error">Delete</button>
+				<button class="pure-button button-secondary button-small" (click)="editCity(data)">Edit</button>
+				<button class="pure-button button-error button-small" (click)="deleteCity(data.id)">Delete</button>
 			</td>
 		</tr>
 	</tbody>
 </table>
+
+<app-modal id="custom-modal" [city]="selectedCity"></app-modal>
