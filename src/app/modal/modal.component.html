@@ -1,23 +1,50 @@
 <div class="app-modal">
 	<div class="app-modal-body">
 		<h3>{{ modalTitle }}</h3>
-		<form class="pure-form pure-form-stacked">
+		<form
+			class="pure-form pure-form-stacked"
+			[formGroup]="cityForm"
+			(ngSubmit)="onSubmit()"
+		>
 			<fieldset>
 				<legend>City Details</legend>
+				<label for="id">Id</label>
+				<input
+					type="text"
+					id="id"
+					placeholder="id"
+					formControlName="id"
+					readonly
+				/>
+
 				<label for="city">City Name</label>
-				<input type="text" id="city" placeholder="City Name" />
+				<input
+					type="text"
+					id="city"
+					formControlName="city"
+					placeholder="City Name"
+				/>
 
 				<label for="start-date">Start Date</label>
-				<input type="date" id="start-date" />
+				<input
+					type="date"
+					id="start-date"
+					formControlName="startDate"
+				/>
 
 				<label for="start-date">End Date</label>
-				<input type="date" id="end-date" />
+				<input type="date" id="end-date" formControlName="endDate" />
 
 				<label for="price">Price</label>
-				<input type="number" id="price" placeholder="Price" />
+				<input
+					type="number"
+					id="price"
+					placeholder="Price"
+					formControlName="price"
+				/>
 
 				<label for="status">Status</label>
-				<select id="status">
+				<select id="status" formControlName="status">
 					<option>Yearly</option>
 					<option>Weekly</option>
 					<option>Seldom</option>
@@ -25,21 +52,19 @@
 					<option>Often</option>
 					<option>Never</option>
 				</select>
+
 				<label for="color">Color</label>
 				<input
 					type="color"
 					id="color"
 					placeholder="Color"
-					value="#e66465"
+					formControlName="color"
 				/>
 
 				<button type="submit" class="pure-button pure-button-primary">
 					Submit
 				</button>
-				<button
-					class="button-error pure-button"
-					(click)="close('custom-modal')"
-				>
+				<button class="button-error pure-button" (click)="close()">
 					Cancel
 				</button>
 			</fieldset>

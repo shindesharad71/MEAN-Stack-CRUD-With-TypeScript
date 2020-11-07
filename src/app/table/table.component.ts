@@ -15,7 +15,6 @@ export class TableComponent implements OnInit {
 	ngOnInit(): void {}
 
 	editCity(city: ICity): void {
-		console.log(city);
 		this.selectedCity = city;
 		this.modalService.open('custom-modal');
 	}

@@ -6,6 +6,7 @@ import {
 	OnInit,
 	OnDestroy,
 } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalService } from './modal.service';
 
 @Component({
@@ -15,9 +16,16 @@ import { ModalService } from './modal.service';
 	encapsulation: ViewEncapsulation.None,
 })
 export class ModalComponent implements OnInit, OnDestroy {
-	@Input() id: string;
-	@Input() city: any = null;
+	@Input() id = 'custom-modal';
 
+	@Input() public set city(city: any) {
+		if (city?.id) {
+			console.log('Input Added');
+			this.cityForm.patchValue(city);
+		}
+	}
+
+	cityForm: FormGroup;
 	private element: any;
 	modalTitle = 'Create Record';
 
@@ -43,6 +51,8 @@ export class ModalComponent implements OnInit, OnDestroy {
 			}
 		});
 		this.modalService.add(this);
+
+		this.initForm();
 	}
 
 	open(): void {
@@ -53,6 +63,22 @@ export class ModalComponent implements OnInit, OnDestroy {
 	close(): void {
 		this.element.style.display = 'none';
 		document.body.classList.remove('app-modal-open');
+	}
+
+	initForm(): void {
+		this.cityForm = new FormGroup({
+			id: new FormControl(null),
+			city: new FormControl(null, Validators.required),
+			startDate: new FormControl(null, Validators.required),
+			endDate: new FormControl(null, Validators.required),
+			price: new FormControl(null, Validators.required),
+			status: new FormControl(null, Validators.required),
+			color: new FormControl(null, Validators.required),
+		});
+	}
+
+	onSubmit(): void {
+		console.log(this.cityForm.value);
 	}
 
 	ngOnDestroy(): void {

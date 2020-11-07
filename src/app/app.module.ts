@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortDirective } from './sort.directive';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ModalComponent } from './modal/modal.component';
@@ -20,6 +20,7 @@ import { ModalComponent } from './modal/modal.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
