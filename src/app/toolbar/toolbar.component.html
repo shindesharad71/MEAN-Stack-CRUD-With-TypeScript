@@ -13,7 +13,6 @@
 			name="start-date"
 			id="start-date"
 			placeholder="Start Date"
-			(change)="onDateChange($event)"
 			[(ngModel)]="startDate"
 		/>
 		<input
@@ -21,7 +20,6 @@
 			name="end-date"
 			id="end-date"
 			placeholder="End Date"
-			(change)="onDateChange($event)"
 			[(ngModel)]="endDate"
     />
     <button class="pure-button button-secondary" (click)="filterCities()">Filter</button>

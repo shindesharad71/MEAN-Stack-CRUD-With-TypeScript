@@ -16,11 +16,6 @@ export class ToolbarComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	onDateChange(event): void {
-		console.log(this.startDate);
-		console.log(this.endDate);
-	}
-
 	filterCities(): void {
 		if (this.startDate && this.endDate) {
 			this.filterEvent.emit({
@@ -33,6 +28,10 @@ export class ToolbarComponent implements OnInit {
 	clearDate(): void {
 		this.startDate = null;
 		this.endDate = null;
+		this.filterEvent.emit({
+			startDate: this.startDate,
+			endDate: this.endDate,
+		});
 	}
 
 	openModal(id: string): void {
