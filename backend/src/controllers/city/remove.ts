@@ -22,5 +22,5 @@ const remove: RequestHandler = async (req, res) => {
 };
 
 export default requestMiddleware(remove, {
-	validation: { body: removeCitySchema }
+	validation: { }
 });
