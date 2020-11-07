@@ -74,7 +74,8 @@
 			*ngFor="
 				let city of cityList
 					| filter: startDate:endDate
-					| paginate: { itemsPerPage: 10, currentPage: p }
+					| paginate: { itemsPerPage: 10, currentPage: p };
+				let i = index
 			"
 		>
 			<td>{{ city.id }}</td>
@@ -96,7 +97,7 @@
 				</button>
 				<button
 					class="pure-button button-error button-small"
-					(click)="deleteCity(city.id)"
+					(click)="deleteCity(city.id, i)"
 				>
 					Delete
 				</button>

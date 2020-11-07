@@ -21,5 +21,7 @@ export class HttpService {
 		return this.httpClient.put(`${this.apiUrl}/city/${cityId}`, payload);
 	}
 
-	// deleteCity(): Observable<any> {}
+	deleteCity(cityId: number): Observable<any> {
+		return this.httpClient.delete(`${this.apiUrl}/city/${cityId}`);
+	}
 }

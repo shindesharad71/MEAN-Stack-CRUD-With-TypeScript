@@ -40,8 +40,15 @@ export class TableComponent implements OnInit {
 		this.modalService.open('custom-modal-edit');
 	}
 
-	deleteCity(cityId): void {
-		console.log(cityId);
+	deleteCity(cityId: number, i: number): void {
+		this.httpService.deleteCity(cityId).subscribe(
+			(res) => {
+				this.cityList.splice(i, 1);
+			},
+			(err) => {
+				console.error(err);
+			}
+		);
 	}
 
 	onFormSubmit(event): void {
