@@ -6,6 +6,8 @@ import {
 	Input,
 	OnInit,
 	OnDestroy,
+	Output,
+	EventEmitter,
 } from '@angular/core';
 import {
 	FormGroup,
@@ -23,6 +25,7 @@ import { ModalService } from './modal.service';
 })
 export class ModalComponent implements OnInit, OnDestroy {
 	@Input() id: string;
+	@Output() afterFormSubmit = new EventEmitter<any>();
 
 	@Input() public set city(city: any) {
 		if (city?.id) {
@@ -107,7 +110,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 	updateFormValues(): void {
 		if (this.editFormValues?.id) {
 			this.cityForm.patchValue({
-        ...this.editFormValues,
+				...this.editFormValues,
 				start_date: formatDate(
 					this.editFormValues.start_date,
 					'yyyy-MM-dd',
@@ -123,11 +126,14 @@ export class ModalComponent implements OnInit, OnDestroy {
 	}
 
 	onSubmit(): void {
-    console.log(this.cityForm.value);
-    this.close();
+		const actionType = this.editFormValues?.id ? 'UPDATE' : 'CREATE';
+		this.afterFormSubmit.emit({ actionType, form: this.cityForm.value });
+		this.cityForm.reset();
+		this.close();
 	}
 
 	ngOnDestroy(): void {
+		this.cityForm.reset();
 		this.modalService.remove(this.id);
 		this.element.remove();
 	}

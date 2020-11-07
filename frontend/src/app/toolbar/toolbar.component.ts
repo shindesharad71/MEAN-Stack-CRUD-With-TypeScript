@@ -41,4 +41,10 @@ export class ToolbarComponent implements OnInit {
 	closeModal(id: string): void {
 		this.modalService.close(id);
 	}
+
+	onFormSubmit(event): void {
+		if (event.actionType === 'CREATE') {
+			console.log(event);
+		}
+	}
 }

@@ -106,4 +106,8 @@
 </table>
 <pagination-controls *ngIf="cityList?.length"></pagination-controls>
 
-<app-modal id="custom-modal-edit" [city]="selectedCity"></app-modal>
+<app-modal
+	id="custom-modal-edit"
+	[city]="selectedCity"
+	(afterFormSubmit)="onFormSubmit($event)"
+></app-modal>
