@@ -1,4 +1,6 @@
+import { ICity } from './../models/city.model';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { HttpService } from '../http.service';
 import { ModalService } from '../modal/modal.service';
 
 @Component({
@@ -12,7 +14,10 @@ export class ToolbarComponent implements OnInit {
 
 	@Output() filterEvent = new EventEmitter<any>();
 
-	constructor(private modalService: ModalService) {}
+	constructor(
+		private modalService: ModalService,
+		private httpService: HttpService
+	) {}
 
 	ngOnInit(): void {}
 
@@ -44,7 +49,14 @@ export class ToolbarComponent implements OnInit {
 
 	onFormSubmit(event): void {
 		if (event.actionType === 'CREATE') {
-			console.log(event);
+			const id = Math.floor(Math.random() * 9999) + 2000;
+			event.form.id = id;
+			this.httpService.createCity(event.form).subscribe(
+				(res) => {
+          const newCity: ICity = res.city;
+				},
+				(err) => console.error(err)
+			);
 		}
 	}
 }

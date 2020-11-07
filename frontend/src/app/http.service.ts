@@ -15,7 +15,9 @@ export class HttpService {
 		return this.httpClient.get(`${this.apiUrl}/city`);
 	}
 
-	// createCity(): Observable<any> {}
+	createCity(payload: any): Observable<any> {
+    return this.httpClient.post(`${this.apiUrl}/city`, payload);
+  }
 
 	updateCity(cityId: number, payload: any): Observable<any> {
 		return this.httpClient.put(`${this.apiUrl}/city/${cityId}`, payload);

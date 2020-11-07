@@ -6,11 +6,11 @@ import City from '../../models/City';
 export const addCitySchema = Joi.object().keys({
 	city: Joi.string().required(),
 	status: Joi.string().required(),
-	price: Joi.string().required(),
+	price: Joi.number().required(),
 	start_date: Joi.string().required(),
 	end_date: Joi.string().required(),
 	color: Joi.string().required(),
-	id: Joi.string().required()
+	id: Joi.number().required()
 });
 
 const add: RequestHandler = async (req, res) => {
@@ -21,7 +21,7 @@ const add: RequestHandler = async (req, res) => {
 		start_date,
 		end_date,
 		color,
-		id,
+		id
 	} = req.body;
 
 	const city = new City({
@@ -37,7 +37,7 @@ const add: RequestHandler = async (req, res) => {
 
 	res.send({
 		message: 'Saved',
-		book: city.toJSON()
+		city: city.toJSON()
 	});
 };
 
