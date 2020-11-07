@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import {
 	Component,
 	ViewEncapsulation,
@@ -6,7 +7,12 @@ import {
 	OnInit,
 	OnDestroy,
 } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+	FormGroup,
+	FormControl,
+	Validators,
+	FormBuilder,
+} from '@angular/forms';
 import { ModalService } from './modal.service';
 
 @Component({
@@ -31,7 +37,11 @@ export class ModalComponent implements OnInit, OnDestroy {
 	modalTitle = 'Create Record';
 	editFormValues: any;
 
-	constructor(private modalService: ModalService, private el: ElementRef) {
+	constructor(
+		private modalService: ModalService,
+		private el: ElementRef,
+		private formBuilder: FormBuilder
+	) {
 		this.element = el.nativeElement;
 	}
 
@@ -68,20 +78,31 @@ export class ModalComponent implements OnInit, OnDestroy {
 	}
 
 	initForm(): void {
-		this.cityForm = new FormGroup({
+		this.cityForm = this.formBuilder.group({
 			id: new FormControl(null),
 			city: new FormControl(null, Validators.required),
-			startDate: new FormControl(null, Validators.required),
-			endDate: new FormControl(null, Validators.required),
+			start_date: new FormControl(null, Validators.required),
+			end_date: new FormControl(null, Validators.required),
 			price: new FormControl(null, Validators.required),
 			status: new FormControl(null, Validators.required),
 			color: new FormControl(null, Validators.required),
 		});
 
 		if (this.editFormValues?.id) {
-      this.cityForm.patchValue(this.editFormValues);
-      console.log(this.cityForm.value);
-
+			this.cityForm.patchValue(this.editFormValues);
+			this.cityForm.patchValue({
+				start_date: formatDate(
+					this.editFormValues.start_date,
+					'yyyy-MM-dd',
+					'en'
+				),
+				end_date: formatDate(
+					this.editFormValues.start_date,
+					'yyyy-MM-dd',
+					'en'
+				)
+			});
+			console.log(this.cityForm.value);
 		}
 	}
 
