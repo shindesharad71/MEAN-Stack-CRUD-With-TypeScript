@@ -12,12 +12,14 @@ export class HttpService {
 	constructor(private httpClient: HttpClient) {}
 
 	getAllCities(): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/city`);
-  }
+		return this.httpClient.get(`${this.apiUrl}/city`);
+	}
 
 	// createCity(): Observable<any> {}
 
-	// updateCity(): Observable<any> {}
+	updateCity(cityId: number, payload: any): Observable<any> {
+		return this.httpClient.put(`${this.apiUrl}/city/${cityId}`, payload);
+	}
 
 	// deleteCity(): Observable<any> {}
 }

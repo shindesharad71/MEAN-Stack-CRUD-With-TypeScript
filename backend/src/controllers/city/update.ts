@@ -10,7 +10,7 @@ export const updateCitySchema = Joi.object().keys({
 	start_date: Joi.string().required(),
 	end_date: Joi.string().required(),
 	color: Joi.string().required(),
-	id: Joi.string().required(),
+	id: Joi.number().required(),
 });
 
 const update: RequestHandler = async (req, res) => {
@@ -24,19 +24,19 @@ const update: RequestHandler = async (req, res) => {
 	} = req.body;
 
 	const { id } = req.params;
-
-	const city = new City();
-	await city.updateOne(
+	await City.updateOne(
 		{ id },
 		{ city: cityName, status, price, start_date, end_date, color }
 	);
 
+	const updatedCity = await City.findOne({ id });
+
 	res.send({
 		message: 'Updated',
-		book: city.toJSON(),
+		city: updatedCity.toJSON()
 	});
 };
 
 export default requestMiddleware(update, {
-	validation: { body: updateCitySchema }
+	validation: { body: updateCitySchema },
 });

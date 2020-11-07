@@ -27,9 +27,12 @@ export class TableComponent implements OnInit {
 	}
 
 	getAllCities(): void {
-		this.httpService.getAllCities().subscribe((res) => {
-			this.cityList = res.cities;
-		});
+		this.httpService.getAllCities().subscribe(
+			(res) => {
+				this.cityList = res.cities;
+			},
+			(err) => console.error(err)
+		);
 	}
 
 	editCity(city: ICity): void {
@@ -43,7 +46,16 @@ export class TableComponent implements OnInit {
 
 	onFormSubmit(event): void {
 		if (event.actionType === 'UPDATE') {
-			console.log(event);
+			this.httpService.updateCity(event?.form?.id, event.form).subscribe(
+				(res) => {
+					const updatedCity: ICity = res.city;
+					const updatedCityList = this.cityList.map((city) =>
+						city.id === updatedCity.id ? updatedCity : city
+					);
+					this.cityList = [...updatedCityList];
+				},
+				(err) => console.error(err)
+			);
 		}
 	}
 }
