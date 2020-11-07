@@ -26,9 +26,8 @@ export class ModalComponent implements OnInit, OnDestroy {
 
 	@Input() public set city(city: any) {
 		if (city?.id) {
-			console.log('Input Added');
 			this.editFormValues = city;
-			this.initForm();
+			this.updateFormValues();
 		}
 	}
 
@@ -46,7 +45,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		if (this.city?.id) {
+		if (this.editFormValues?.id) {
 			this.modalTitle = 'Edit Record';
 		}
 
@@ -63,7 +62,6 @@ export class ModalComponent implements OnInit, OnDestroy {
 			}
 		});
 		this.modalService.add(this);
-
 		this.initForm();
 	}
 
@@ -79,15 +77,35 @@ export class ModalComponent implements OnInit, OnDestroy {
 
 	initForm(): void {
 		this.cityForm = this.formBuilder.group({
-			id: new FormControl(null),
-			city: new FormControl(null, Validators.required),
-			start_date: new FormControl(null, Validators.required),
-			end_date: new FormControl(null, Validators.required),
-			price: new FormControl(null, Validators.required),
-			status: new FormControl(null, Validators.required),
-			color: new FormControl(null, Validators.required),
+			id: new FormControl(this.editFormValues?.id || null),
+			city: new FormControl(
+				this.editFormValues?.city || null,
+				Validators.required
+			),
+			start_date: new FormControl(
+				this.editFormValues?.start_date || null,
+				Validators.required
+			),
+			end_date: new FormControl(
+				this.editFormValues?.end_date || null,
+				Validators.required
+			),
+			price: new FormControl(
+				this.editFormValues?.price || null,
+				Validators.required
+			),
+			status: new FormControl(
+				this.editFormValues?.status || null,
+				Validators.required
+			),
+			color: new FormControl(
+				this.editFormValues?.color || null,
+				Validators.required
+			),
 		});
+	}
 
+	updateFormValues(): void {
 		if (this.editFormValues?.id) {
 			this.cityForm.patchValue(this.editFormValues);
 			this.cityForm.patchValue({
@@ -100,9 +118,9 @@ export class ModalComponent implements OnInit, OnDestroy {
 					this.editFormValues.start_date,
 					'yyyy-MM-dd',
 					'en'
-				)
+				),
 			});
-			console.log(this.cityForm.value);
+			console.log('[Updated] - ', this.cityForm.value);
 		}
 	}
 

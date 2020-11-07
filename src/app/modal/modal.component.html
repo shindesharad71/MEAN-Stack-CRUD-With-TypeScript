@@ -1,19 +1,14 @@
 <div class="app-modal">
 	<div class="app-modal-body">
 		<h3>{{ modalTitle }}</h3>
-		<form
-			class="pure-form pure-form-stacked"
-			[formGroup]="cityForm"
-			(ngSubmit)="onSubmit()"
-		>
+		<form class="pure-form pure-form-stacked" [formGroup]="cityForm">
 			<fieldset>
 				<legend>City Details</legend>
 				<label for="id">Id</label>
 				<input
 					type="text"
-					id="id"
 					placeholder="id"
-          formControlName="id"
+					formControlName="id"
 					readonly
 				/>
 
@@ -61,7 +56,11 @@
 					formControlName="color"
 				/>
 
-				<button type="submit" class="pure-button pure-button-primary" [disabled]="!cityForm.valid">
+				<button
+					class="pure-button pure-button-primary"
+          [disabled]="!cityForm.valid"
+          (click)="onSubmit()"
+				>
 					Submit
 				</button>
 				<button class="button-error pure-button" (click)="close()">
