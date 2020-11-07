@@ -1,18 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ModalService } from '../modal/modal.service';
 import { ICity } from '../models/city.model';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-table',
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
 	toolTipText = 'Click To Sort';
 	selectedCity: ICity = null;
 	p = 1;
 	cityList: Array<ICity> = [];
+	subscriptions: Subscription[] = [];
 
 	@Input() startDate = null;
 	@Input() endDate = null;
@@ -24,6 +26,14 @@ export class TableComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getAllCities();
+
+		this.subscriptions.push(
+			this.httpService.newlyAddedCity$.subscribe((city: ICity) => {
+				if (city?.id) {
+					this.cityList.unshift(city);
+				}
+			})
+		);
 	}
 
 	getAllCities(): void {
@@ -64,5 +74,11 @@ export class TableComponent implements OnInit {
 				(err) => console.error(err)
 			);
 		}
-	}
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    });
+  }
 }

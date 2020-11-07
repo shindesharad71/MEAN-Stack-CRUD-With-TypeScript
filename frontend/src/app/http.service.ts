@@ -1,13 +1,14 @@
 import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class HttpService {
-	apiUrl = environment.API_URL;
+  apiUrl = environment.API_URL;
+  newlyAddedCity$ = new BehaviorSubject({});
 
 	constructor(private httpClient: HttpClient) {}
 

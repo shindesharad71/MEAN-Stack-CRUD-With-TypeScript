@@ -53,7 +53,8 @@ export class ToolbarComponent implements OnInit {
 			event.form.id = id;
 			this.httpService.createCity(event.form).subscribe(
 				(res) => {
-          const newCity: ICity = res.city;
+					const newCity: ICity = res.city;
+					this.httpService.newlyAddedCity$.next(newCity);
 				},
 				(err) => console.error(err)
 			);
