@@ -28,7 +28,7 @@ export class TableComponent implements OnInit {
 
 	getAllCities(): void {
 		this.httpService.getAllCities().subscribe((res) => {
-			res.cities = this.cityList;
+			 this.cityList = res.cities;
 		});
 	}
 

@@ -1,4 +1,6 @@
-# MEAN Stack RESTful Application with Table Sorting and Filters
+# MEAN Stack RESTful Application
+
+MEAN Stack RESTful Application with Table Sorting and Filters.
 
 ### Thanks and Credits
 
