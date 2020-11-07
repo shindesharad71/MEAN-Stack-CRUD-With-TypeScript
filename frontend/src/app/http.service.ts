@@ -1,27 +1,23 @@
+import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class HttpService {
+	apiUrl = environment.API_URL;
 
-  constructor(private httpClient: HttpClient) { }
+	constructor(private httpClient: HttpClient) {}
 
-  getAllCities(): Observable<any> {
-
+	getAllCities(): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/city`);
   }
 
-  createCity(): Observable<any> {
+	// createCity(): Observable<any> {}
 
-  }
+	// updateCity(): Observable<any> {}
 
-  updateCity(): Observable<any> {
-
-  }
-
-  deleteCity(): Observable<any> {
-
-  }
+	// deleteCity(): Observable<any> {}
 }

@@ -1,12 +1,14 @@
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import path from 'path';
+import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
 import ApplicationError from './errors/application-error';
 import routes from './routes';
 
 const app = express();
 
+app.use(cors());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
