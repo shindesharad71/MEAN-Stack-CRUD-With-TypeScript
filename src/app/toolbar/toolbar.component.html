@@ -21,9 +21,21 @@
 			id="end-date"
 			placeholder="End Date"
 			[(ngModel)]="endDate"
-    />
-    <button class="pure-button button-secondary" (click)="filterCities()">Filter</button>
-		<button class="pure-button" (click)="clearDate()">Clear</button>
+		/>
+		<button
+			class="pure-button button-secondary"
+			(click)="filterCities()"
+			[disabled]="!startDate || !endDate"
+		>
+			Filter
+		</button>
+		<button
+			class="pure-button"
+			(click)="clearDate()"
+			[disabled]="!startDate && !endDate"
+		>
+			Clear
+		</button>
 	</div>
 </form>
 
