@@ -2,6 +2,9 @@
 
 This is a MEAN Stack RESTful application with table sorting and filters, application also have functionality to create, update, delete and get all the records.
 
+## Demo
+![Demo](demo.gif)
+
 ## Installation and Setup Instructions
 
 Clone this repository or download.
