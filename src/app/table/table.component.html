@@ -70,7 +70,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let city of cityList">
+		<tr *ngFor="let city of cityList | filter: startDate:endDate">
 			<td>{{ city.id }}</td>
 			<td>{{ city.city }}</td>
 			<td>{{ city.start_date }}</td>

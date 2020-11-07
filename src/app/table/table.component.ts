@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from '../modal/modal.service';
+import { ICity } from '../models/city.model';
 
 @Component({
 	selector: 'app-table',
@@ -9,6 +10,9 @@ import { ModalService } from '../modal/modal.service';
 export class TableComponent implements OnInit {
 	toolTipText = 'Click To Sort';
 	selectedCity: ICity = null;
+
+	@Input() startDate = null;
+	@Input() endDate = null;
 
 	constructor(private modalService: ModalService) {}
 
@@ -142,14 +146,4 @@ export class TableComponent implements OnInit {
 			color: '#a519fc',
 		},
 	];
-}
-
-export interface ICity {
-	id: number;
-	city: string;
-	start_date: string;
-	end_date: string;
-	price: number;
-	status: string;
-	color: string;
 }

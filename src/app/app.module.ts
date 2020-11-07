@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortDirective } from './sort.directive';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ModalComponent } from './modal/modal.component';
+import { FilterPipe } from './pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ModalComponent } from './modal/modal.component';
     TableComponent,
     SortDirective,
     ToolbarComponent,
-    ModalComponent
+    ModalComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

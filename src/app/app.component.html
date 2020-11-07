@@ -3,5 +3,5 @@
 </section>
 <section id="cities">
 	<app-toolbar (filterEvent)="onFilter($event)"></app-toolbar>
-	<app-table></app-table>
+	<app-table [startDate]="statDate" [endDate]="endDate"></app-table>
 </section>
