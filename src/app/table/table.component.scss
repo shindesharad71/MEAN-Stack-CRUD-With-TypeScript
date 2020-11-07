@@ -1,14 +1,14 @@
 table {
-  margin: auto;
-  th {
-    &:hover {
-      cursor: pointer;
-    }
-  }
+	margin: auto;
+	th {
+		&:hover {
+			cursor: pointer;
+		}
+	}
 
-  span {
-    display: inline-block;
-    height: 16px;
-    width: 16px;
-  }
+	span {
+		display: inline-block;
+		height: 16px;
+		width: 16px;
+	}
 }

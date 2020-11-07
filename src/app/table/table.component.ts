@@ -9,7 +9,8 @@ import { ICity } from '../models/city.model';
 })
 export class TableComponent implements OnInit {
 	toolTipText = 'Click To Sort';
-	selectedCity: ICity = null;
+  selectedCity: ICity = null;
+  p = 1;
 
 	@Input() startDate = null;
 	@Input() endDate = null;

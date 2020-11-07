@@ -70,7 +70,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let city of cityList | filter: startDate:endDate">
+		<tr
+			*ngFor="
+				let city of cityList
+					| filter: startDate:endDate
+					| paginate: { itemsPerPage: 5, currentPage: p }
+			"
+		>
 			<td>{{ city.id }}</td>
 			<td>{{ city.city }}</td>
 			<td>{{ city.start_date }}</td>
@@ -98,5 +104,6 @@
 		</tr>
 	</tbody>
 </table>
+<pagination-controls></pagination-controls>
 
 <app-modal id="custom-modal-edit" [city]="selectedCity"></app-modal>
