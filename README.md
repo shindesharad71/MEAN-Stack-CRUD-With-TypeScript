@@ -18,6 +18,7 @@ Clone this repository or download.
 
 -   Goto the `backend` folder by running `cd backend/`
 -   Install project dependencies by running `npm i`
+-   Rename `.env.default` to `.env` and update MongoDB config
 -   Run project locally by running `npm run build && npm run start`
 -   APIs will start running on `http://localhost:3000/`
 
